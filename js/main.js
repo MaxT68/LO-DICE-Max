@@ -1,32 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Contatore esclusive
     let exclusiveCount = 42;
-    const updateExclusiveCounter = () => {
-        document.querySelector('.exclusive-tag').textContent = `🚨 ${exclusiveCount} Exclusive`;
+    const exclusiveElement = document.querySelector('.exclusive-tag');
+    
+    setInterval(() => {
         exclusiveCount++;
-    };
+        exclusiveElement.textContent = `🚨 ${exclusiveCount} Exclusive`;
+    }, 5000);
     
-    // Aggiorna ogni 24 ore (86400000 ms) - per demo ogni 5 secondi
-    setInterval(updateExclusiveCounter, 5000);
+    // Effetti hover card notizie
+    document.querySelectorAll('.news-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.querySelector('img').style.transform = 'scale(1.05)';
+            this.querySelector('.news-title').style.color = 'var(--rosso)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.querySelector('img').style.transform = 'scale(1)';
+            this.querySelector('.news-title').style.color = 'var(--blu)';
+        });
+    });
     
-    // Animazione progress bar
-    const progressBar = document.querySelector('.progress');
-    let progress = 65;
-    const animateProgress = () => {
-        let width = 65;
-        const interval = setInterval(() => {
-            if (width <= progress) {
-                progressBar.style.width = `${width}%`;
-                document.querySelector('.progress-text').textContent = `${width}% completato`;
-                width++;
-            } else {
-                clearInterval(interval);
-            }
-        }, 30);
-    };
-    
-    // Avvia l'animazione dopo 1 secondo
-    setTimeout(animateProgress, 1000);
+    // Animazione pulsante CTA
+    const ctaButton = document.querySelector('.cta-button');
+    if (ctaButton) {
+        ctaButton.addEventListener('mouseenter', () => {
+            ctaButton.innerHTML = 'LEGGI L\'ULTIMO AGGIORNAMENTO <i class="fas fa-arrow-right"></i>';
+        });
+        
+        ctaButton.addEventListener('mouseleave', () => {
+            ctaButton.innerHTML = 'LEGGI L\'ULTIMO AGGIORNAMENTO →';
+        });
+    }
     
     // Effetti hover nav
     document.querySelectorAll('nav a').forEach(link => {
@@ -39,22 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Animazione pallone
-    const animateBall = () => {
-        const ball = document.querySelector('.x-special::before');
-        if (ball) {
-            ball.style.animation = 'none';
-            setTimeout(() => {
-                ball.style.animation = 'bounce 2s infinite';
-            }, 10);
-        }
-    };
-    
-    setInterval(animateBall, 4000);
-    
     // Messaggio in console
     console.log('%c🚧 LO dice MAx - Pagina in costruzione 🚧', 
         'color: #D72638; font-size: 16px; font-weight: bold; background: #F7F7F7; padding: 5px;');
-    console.log('%c👋 Ciao Max! La tua pagina sarà pronta a breve!', 
-        'color: #0A2463; font-size: 14px;');
 });
