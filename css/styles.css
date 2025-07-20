@@ -728,3 +728,52 @@ footer {
     font-size: 1.2rem;
     line-height: 1.8;
 }
+
+/* 🎙️ ABOUT SECTION */
+.about-section {
+    background-color: var(--blu);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.about-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--rosso);
+}
+
+.about-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+/* Miglioramenti footer */
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    line-height: 2;
+}
+
+.footer-column ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: var(--oro);
+}
