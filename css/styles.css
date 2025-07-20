@@ -777,6 +777,34 @@ footer {
 .footer-column ul li a:hover {
     color: var(--oro);
 }
+.email-contact {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--bianco);
+}
+
+.email-contact i {
+    color: var(--oro);
+}
+
+/* Migliora i social links */
+.social-links a {
+    background: rgba(255,255,255,0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--rosso);
+    transform: translateY(-3px);
+}
 
 .news-title.rosso {
     color: var(--rosso) !important;
