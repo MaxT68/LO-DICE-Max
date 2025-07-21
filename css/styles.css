@@ -809,3 +809,16 @@ footer {
 .news-title.rosso {
     color: var(--rosso) !important;
 }
+
+/* Aggiungi questa regola nella sezione "COMPONENTI REUTILIZZABILI" (dopo le variabili e i reset, prima delle sezioni specifiche) */
+
+/* 🏟️ IMMAGINE STADIO HERO */
+.stadio-hero {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    border-bottom: 5px solid var(--rosso);
+    border-top: 5px solid var(--blu);
+    filter: brightness(0.9);
+}
