@@ -1,213 +1,440 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Lavagna di MAx | Analisi e Voti sul Calcio</title>
-  <meta name="description" content="Analisi tattiche, voti e approfondimenti sul calcio italiano e internazionale a cura di Max Tronci, aspirante giornalista sportivo">
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@300;400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <!-- Font Awesome per icone social -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Animate.css per effetti wow -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <!-- CSS principale -->
-  <link rel="stylesheet" href="css/main.css">
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="img/favicon-ball.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Lavagna di MAx | Analisi e Voti sul Cagliari Calcio</title>
+    <meta name="description" content="Analisi tattiche approfondite e voti tecnici sul Cagliari Calcio a cura di Max Tronci, giornalista sportivo indipendente">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@300;400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Stili specifici per la lavagna */
+        .lavagna-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://raw.githubusercontent.com/MaxT68/LO-DICE-Max/main/La%20Lavagna%20di%20MAx.png') center/cover no-repeat;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .lavagna-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .lavagna-subtitle {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+        
+        /* Sezione voti */
+        .voti-container {
+            background: #f8f8f8;
+            padding: 40px 0;
+        }
+        
+        .voti-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .voti-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .voti-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .voti-header {
+            border-bottom: 2px solid #cc0000;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .voti-title {
+            color: #cc0000;
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .voti-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .voti-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .voti-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .voti-name {
+            font-weight: 700;
+        }
+        
+        .voti-value {
+            font-weight: 900;
+            color: #003366;
+        }
+        
+        .voti-total {
+            margin-top: 15px;
+            font-weight: 700;
+            text-align: right;
+            color: #cc0000;
+        }
+        
+        /* Sezione analisi */
+        .analisi-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #cc0000;
+            margin-bottom: 10px;
+        }
+        
+        .section-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Footer aggiuntivo */
+        .copyright-notice {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .copyright-notice a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+        
+        .back-home {
+            display: inline-block;
+            margin-top: 30px;
+            background: #cc0000;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .back-home:hover {
+            background: #003366;
+        }
+    </style>
 </head>
 <body>
-  <!-- Header con logo e nav -->
-  <header class="main-header">
-    <div class="header-container">
-      <div class="logo-container">
-        <a href="index.html" class="logo-link">
-          <img src="img/logo-ball.png" alt="Pallone Logo" class="logo-ball">
-          <span class="logo-text">LO DICE <span class="logo-highlight">MAx</span></span>
-        </a>
-      </div>
-      <nav class="main-nav">
-        <ul class="nav-list">
-          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="notizie-flash.html" class="nav-link">Notizie Flash</a></li>
-          <li class="nav-item"><a href="retroscena.html" class="nav-link">Retroscena</a></li>
-          <li class="nav-item active"><a href="lavagna.html" class="nav-link">La Lavagna</a></li>
-          <li class="nav-item"><a href="#contatti" class="nav-link">Contatti</a></li>
-          <li class="nav-item exclusive"><a href="#" class="nav-link">🚨 Exclusive</a></li>
-        </ul>
-        <button class="mobile-menu-btn" aria-label="Menu mobile">
-          <i class="fas fa-bars"></i>
-        </button>
-      </nav>
-    </div>
-  </header>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">LO dice MA<span class="x-special">x</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="notizie-flash.html">Notizie Flash</a></li>
+                    <li><a href="retroscena.html">Retroscena</a></li>
+                    <li><a href="lavagna.html" class="active">La Lavagna</a></li>
+                    <li><a href="#footer">Contatti</a></li>
+                    <li><a href="#" class="exclusive-tag">🚨 Exclusive</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <!-- Hero Section con effetto wow -->
-  <section class="hero-section">
-    <div class="hero-overlay"></div>
-    <div class="hero-content animate__animated animate__fadeInDown">
-      <h1 class="hero-title">La Lavagna di <span class="hero-highlight">MAx</span></h1>
-      <p class="hero-subtitle">Analisi tattiche, voti e approfondimenti sul mondo del calcio</p>
-      <a href="#articoli-recenti" class="hero-cta animate__animated animate__pulse animate__infinite">Leggi gli ultimi articoli</a>
-    </div>
-  </section>
-
-  <!-- Sezione articoli recenti -->
-  <main class="main-content">
-    <section id="articoli-recenti" class="articles-section">
-      <div class="section-header">
-        <h2 class="section-title">Ultime Analisi</h2>
-        <p class="section-subtitle">Gli ultimi articoli dalla mia lavagna</p>
-      </div>
-      
-      <div class="articles-grid">
-        <!-- Articolo 1 -->
-        <article class="article-card animate__animated animate__fadeInUp" data-date="2025-07-20">
-          <div class="card-image">
-            <img src="https://raw.githubusercontent.com/MaxT68/LO-DICE-Max/main/img/partita-20-luglio.jpg" alt="Cagliari vs Ospitaletto" loading="lazy">
-            <div class="card-date">20 Luglio 2025</div>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title">Cagliari vs Ospitaletto</h3>
-            <p class="card-excerpt">Match del 20 luglio 2025: buona organizzazione tattica e giovani protagonisti in assaggio.</p>
-            <div class="card-rating">
-              <span class="rating-label">Voto di MAx:</span>
-              <span class="rating-value">7.3/10</span>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="read-more">Leggi analisi completa</a>
-              <div class="social-share">
-                <span class="share-text">Condividi:</span>
-                <a href="#" class="social-icon" aria-label="Condividi su Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon" aria-label="Condividi su Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon" aria-label="Condividi su WhatsApp"><i class="fab fa-whatsapp"></i></a>
-              </div>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Articolo 2 -->
-        <article class="article-card animate__animated animate__fadeInUp" data-date="2025-07-15" style="animation-delay: 0.2s;">
-          <div class="card-image">
-            <img src="https://via.placeholder.com/600x400/cc0000/ffffff?text=Tattica+Juventus" alt="Analisi Juventus" loading="lazy">
-            <div class="card-date">15 Luglio 2025</div>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title">La nuova Juventus: prime impressioni</h3>
-            <p class="card-excerpt">Come sta cambiando la squadra sotto la nuova gestione, con un occhio particolare al modulo tattico.</p>
-            <div class="card-rating">
-              <span class="rating-label">Voto di MAx:</span>
-              <span class="rating-value">6.8/10</span>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="read-more">Leggi analisi completa</a>
-              <div class="social-share">
-                <span class="share-text">Condividi:</span>
-                <a href="#" class="social-icon" aria-label="Condividi su Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon" aria-label="Condividi su Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon" aria-label="Condividi su WhatsApp"><i class="fab fa-whatsapp"></i></a>
-              </div>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Articolo 3 -->
-        <article class="article-card animate__animated animate__fadeInUp" data-date="2025-07-10" style="animation-delay: 0.4s;">
-          <div class="card-image">
-            <img src="https://via.placeholder.com/600x400/003366/ffffff?text=Calciomercato" alt="Calciomercato" loading="lazy">
-            <div class="card-date">10 Luglio 2025</div>
-          </div>
-          <div class="card-content">
-            <h3 class="card-title">Calciomercato: le mosse da fare</h3>
-            <p class="card-excerpt">Le operazioni che le squadre italiane dovrebbero completare per essere competitive in Europa.</p>
-            <div class="card-rating">
-              <span class="rating-label">Voto di MAx:</span>
-              <span class="rating-value">8.2/10</span>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="read-more">Leggi analisi completa</a>
-              <div class="social-share">
-                <span class="share-text">Condividi:</span>
-                <a href="#" class="social-icon" aria-label="Condividi su Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon" aria-label="Condividi su Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon" aria-label="Condividi su WhatsApp"><i class="fab fa-whatsapp"></i></a>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-      
-      <div class="section-footer">
-        <a href="archivio.html" class="archive-link">Vai all'archivio completo →</a>
-      </div>
+    <!-- Hero Section -->
+    <section class="lavagna-hero">
+        <div class="hero-content animate__animated animate__fadeIn">
+            <h1 class="lavagna-title">LA LAVAGNA DI MAx</h1>
+            <p class="lavagna-subtitle">Analisi tecniche approfondite e voti oggettivi sul Cagliari Calcio</p>
+            <a href="#voti" class="cta-button animate__animated animate__pulse animate__infinite">VEDI I VOTI RECENTI</a>
+        </div>
     </section>
-    
+
+    <!-- Sezione voti -->
+    <section id="voti" class="voti-container">
+        <div class="voti-grid">
+            <!-- Voti 1 -->
+            <div class="voti-card animate__animated animate__fadeInUp">
+                <div class="voti-header">
+                    <h2 class="voti-title">Cagliari vs Ospitaletto</h2>
+                    <div class="voti-date">20 Luglio 2025 - Amichevole</div>
+                </div>
+                <ul class="voti-list">
+                    <li class="voti-item">
+                        <span class="voti-name">Vinciguerra</span>
+                        <span class="voti-value">7</span>
+                    </li>
+                    <li class="voti-item">
+                        <span class="voti-name">Liteta</span>
+                        <span class="voti-value">7</span>
+                    </li>
+                    <li class="voti-item">
+                        <span class="voti-name">Idrissi</span>
+                        <span class="voti-value">7</span>
+                    </li>
+                    <li class="voti-item">
+                        <span class="voti-name">Organizzazione difensiva</span>
+                        <span class="voti-value">7.5</span>
+                    </li>
+                    <li class="voti-item">
+                        <span class="voti-name">Transizioni</span>
+                        <span class="voti-value">6.5</span>
+                    </li>
+                </ul>
+                <div class="voti-total">Voto complessivo: <strong>7.3/10</strong></div>
+                <a href="#" class="read-more">Analisi completa →</a>
+            </div>
+            
+            <!-- Voti 2 -->
+            <div class="voti-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <div class="voti-header">
+                    <h2 class="voti-title">Testimonianze estive</h2>
+                    <div class="voti-date">15 Luglio 2025 - Allenamento</div>
+                </div>
+                <ul class="voti-list">
+                    <li class="voti-item">
+                        <span class="voti-name">Caprile</span>
+                        <span class="voti-value">8</span>
+                    </li>
+                    <li class="voti-item">
+                        <span class="voti-name">Dossena</span>
+                        <span class="voti-value">7.5</span>
+                    </li>
+                    <li class="voti-item">
+                        <span class="voti-name">Prati</span>
+                        <span class="voti-value">7</span>
+                    </li>
+                    <li class="voti-item">
+                        <span class="voti-name">Intensità allenamento</span>
+                        <span class="voti-value">8</span>
+                    </li>
+                    <li class="voti-item">
+                        <span class="voti-name">Preparazione atletica</span>
+                        <span class="voti-value">7.5</span>
+                    </li>
+                </ul>
+                <div class="voti-total">Voto complessivo: <strong>7.6/10</strong></div>
+                <a href="#" class="read-more">Analisi completa →</a>
+            </div>
+            
+            <!-- Voti 3 -->
+            <div class="voti-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                <div class="voti-header">
+                    <h2 class="voti-title">Provini giovani</h2>
+                    <div class="voti-date">10 Luglio 2025 - Settore giovanile</div>
+                </div>
+                <ul class="voti-list">
+                    <li class="voti-item">
+                        <span class="voti-name">Carboni</span>
+                        <span class="voti-value">7.5</span>
+                    </li>
+                    <li class="voti-item">
+                        <span class="voti-name">Contini</span>
+                        <span class="voti-value">7</span>
+                    </li>
+                    <li class="voti-item">
+                        <span class="voti-name">Fadda</span>
+                        <span class="voti-value">6.5</span>
+                    </li>
+                    <li class="voti-item">
+                        <span class="voti-name">Qualità tecnica</span>
+                        <span class="voti-value">7.5</span>
+                    </li>
+                    <li class="voti-item">
+                        <span class="voti-name">Attitudine</span>
+                        <span class="voti-value">8</span>
+                    </li>
+                </ul>
+                <div class="voti-total">Voto complessivo: <strong>7.3/10</strong></div>
+                <a href="#" class="read-more">Analisi completa →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione analisi -->
+    <section class="analisi-section">
+        <div class="section-intro">
+            <h2 class="section-title">Analisi Approfondite</h2>
+            <p class="section-subtitle">Dettagli tecnici e considerazioni tattiche sulle prestazioni della squadra</p>
+        </div>
+        
+        <div class="articles-grid">
+            <!-- Analisi 1 -->
+            <article class="article-card animate__animated animate__fadeInUp">
+                <div class="card-image">
+                    <img src="https://raw.githubusercontent.com/MaxT68/LO-DICE-Max/main/img/partita-20-luglio.jpg" alt="Cagliari vs Ospitaletto" loading="lazy">
+                    <div class="card-date">20 Luglio 2025</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Cagliari-Ospitaletto: cosa abbiamo visto</h3>
+                    <p class="card-excerpt">Analisi dettagliata della partita amichevole con valutazioni sui singoli reparti e sui giovani in prova.</p>
+                    <div class="card-footer">
+                        <a href="#" class="read-more">Leggi analisi completa</a>
+                        <div class="social-share">
+                            <span>Condividi:</span>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Analisi 2 -->
+            <article class="article-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <div class="card-image">
+                    <img src="https://raw.githubusercontent.com/MaxT68/LO-DICE-Max/main/allenatore-di-calcio-che-insegna-ai-suoi-alunni.jpg" alt="Allenamento Cagliari" loading="lazy">
+                    <div class="card-date">15 Luglio 2025</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Il lavoro di Pisacane: primi segnali</h3>
+                    <p class="card-excerpt">Come sta cambiando la squadra sotto la nuova gestione tecnica, con un focus sul modulo tattico.</p>
+                    <div class="card-footer">
+                        <a href="#" class="read-more">Leggi analisi completa</a>
+                        <div class="social-share">
+                            <span>Condividi:</span>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Analisi 3 -->
+            <article class="article-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3" alt="Elia Caprile" loading="lazy">
+                    <div class="card-date">10 Luglio 2025</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Caprile: analisi tecnica</h3>
+                    <p class="card-excerpt">Approfondimento sulle caratteristiche del nuovo portiere e su come potrebbe integrarsi nella squadra.</p>
+                    <div class="card-footer">
+                        <a href="#" class="read-more">Leggi analisi completa</a>
+                        <div class="social-share">
+                            <span>Condividi:</span>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
     <!-- Sezione about -->
     <section class="about-section">
-      <div class="about-container">
-        <div class="about-image">
-          <img src="https://via.placeholder.com/400x500/cccccc/333333?text=MAx+Tronci" alt="Max Tronci" loading="lazy">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://raw.githubusercontent.com/MaxT68/LO-DICE-Max/main/dott.%20TRONCI.jpg" alt="Max Tronci" loading="lazy">
+            </div>
+            <div class="about-content">
+                <h2 class="about-title">PERCHÉ LA LAVAGNA?</h2>
+                <p class="about-text">La lavagna è lo strumento fondamentale per l'analisi tattica. In questa rubrica applico lo stesso metodo: schemi chiari, valutazioni oggettive e spiegazioni dettagliate.</p>
+                <p class="about-text">I miei voti seguono criteri precisi: tecnica individuale, decision making, contributo tattico e attitudine. Non troverai giudizi emotivi, solo analisi concrete.</p>
+                <div class="about-cta">
+                    <a href="mailto:max.tronci@gmail.com" class="cta-button">INVIAMI LA TUA ANALISI</a>
+                </div>
+            </div>
         </div>
-        <div class="about-content">
-          <h2 class="about-title">Chi è <span class="text-red">MAx</span>?</h2>
-          <p class="about-text">Appassionato di calcio fin da bambino, ho giocato a livello amatoriale anche in periodo universitario per poi appendere le scarpe e dedicarmi al lavoro. Analista tattico autodidatta con un occhio particolare per i dettagli che fanno la differenza in campo.</p>
-          <p class="about-text">La mia missione è fornire analisi approfondite e voti obiettivi, con lo stile diretto e chiaro di chi il calcio lo vive con passione.</p>
-          <p class="about-text">Scrivo per passione.</p>
-          <div class="about-cta">
-            <a href="mailto:max.tronci@outlook.it" class="cta-button">Contattami per collaborazioni</a>
-          </div>
-        </div>
-      </div>
     </section>
-  </main>
-  
-  <!-- Footer -->
-  <footer id="contatti" class="main-footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-logo">
-          <img src="img/logo-ball-white.png" alt="Pallone Logo" class="logo-ball">
-          <span class="logo-text">LO DICE <span class="logo-highlight">MAx</span></span>
-        </a>
-        <p class="footer-slogan">Analisi e approfondimenti sul mondo del calcio</p>
-      </div>
-      
-      <div class="footer-links">
-        <div class="links-column">
-          <h3 class="links-title">Sezioni</h3>
-          <ul class="links-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="notizie-flash.html">Notizie Flash</a></li>
-            <li><a href="retroscena.html">Retroscena</a></li>
-            <li><a href="lavagna.html">La Lavagna</a></li>
-            <li><a href="archivio.html">Archivio</a></li>
-          </ul>
-        </div>
-        
-        <div class="links-column">
-          <h3 class="links-title">Contatti</h3>
-          <ul class="links-list">
-            <li><a href="mailto:max.tronci@gmail.com"><i class="fas fa-envelope"></i> max.tronci@outlook.it</a></li>
-                       <li class="social-links">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <p class="copyright">&copy; 2025 La Lavagna di MAx. Tutti i diritti riservati.</p>
-      <p class="credits">Designed with passion by <a href="mailto:max.tronci@outlook.it">MAx Tronci</a></p>
-    </div>
-  </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/archive.js"></script>
+    <!-- Footer -->
+    <footer id="footer" class="main-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">LO dice MA<span class="x-special">x</span></div>
+                <p class="footer-slogan">Analisi tecniche e approfondimenti sul Cagliari Calcio</p>
+            </div>
+            <div class="footer-links">
+                <div class="links-column">
+                    <h3 class="links-title">Sezioni</h3>
+                    <ul class="links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="notizie-flash.html">Notizie Flash</a></li>
+                        <li><a href="lavagna.html">La Lavagna</a></li>
+                        <li><a href="archivio.html">Archivio</a></li>
+                    </ul>
+                </div>
+                <div class="links-column">
+                    <h3 class="links-title">Contatti</h3>
+                    <ul class="links-list">
+                        <li><a href="mailto:max.tronci@outlook.it"><i class="fas fa-envelope"></i> max.tronci@outlook.it</a></li>
+                    
+                    </ul>
+                </div>
+                <div class="links-column">
+                    <h3 class="links-title">Social</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Copyright notice -->
+    <div class="copyright-notice">
+        <p>© 2025 <strong>La Lavagna di MAx</strong> - Tutti i contenuti sono proprietà intellettuale di Max Tronci. 
+        <br>È vietata la riproduzione, anche parziale, senza autorizzazione scritta.</p>
+        <p>-Tutti i diritti riservati. Si valutano Collaborazioni con Redazioni giornalistiche per inserimento del Format "LO DICE MAx"</p>
+        <a href="index.html" class="back-home">← Torna alla Home</a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
