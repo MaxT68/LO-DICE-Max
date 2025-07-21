@@ -856,6 +856,16 @@ footer {
 .news-card {
     transition: all 0.3s;
 }
+.news-card {
+    max-height: none; /* rimuove ogni limite all'altezza */
+    padding-bottom: 2rem;
+}
+
+.news-content h4 {
+    font-size: 1.1rem;
+    color: var(--rosso);
+    margin-top: 1rem;
+}
 
 .news-card.archived {
     opacity: 0.6;
