@@ -170,3 +170,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Opzionale: puoi aggiungere qui la logica per nascondere/mostrare gli articoli archiviati
   // o per spostarli automaticamente in una pagina di archivio
 });
+
+// Aggiungi questo al tuo main.js
+$(window).scroll(function() {
+    if ($(window).scrollTop() > 50) {
+        $('.main-header').addClass('scrolled');
+    } else {
+        $('.main-header').removeClass('scrolled');
+    }
+});
