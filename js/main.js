@@ -48,3 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('%c🚧 LO dice MAx - Pagina in costruzione 🚧', 
         'color: #D72638; font-size: 16px; font-weight: bold; background: #F7F7F7; padding: 5px;');
 });
+
+// Dopo 14 giorni sposta in archivio
+document.querySelectorAll('.news-card').forEach(card => {
+    const postDate = new Date(card.dataset.date); // Aggiungi data come data-date="2025-06-20"
+    const daysOld = (new Date() - postDate) / (1000 * 60 * 60 * 24);
+    
+    if(daysOld > 14) {
+        card.classList.add('archived');
+        document.querySelector('.archive-grid').appendChild(card.cloneNode(true));
+        card.remove();
+    }
+});
