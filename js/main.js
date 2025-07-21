@@ -49,14 +49,27 @@ document.addEventListener('DOMContentLoaded', function() {
         'color: #D72638; font-size: 16px; font-weight: bold; background: #F7F7F7; padding: 5px;');
 });
 
-// Dopo 14 giorni sposta in archivio
-document.querySelectorAll('.news-card').forEach(card => {
-    const postDate = new Date(card.dataset.date); // Aggiungi data come data-date="2025-06-20"
-    const daysOld = (new Date() - postDate) / (1000 * 60 * 60 * 24);
-    
-    if(daysOld > 14) {
-        card.classList.add('archived');
-        document.querySelector('.archive-grid').appendChild(card.cloneNode(true));
-        card.remove();
-    }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ...altri script...
+
+    // ARCHIVIAZIONE AUTOMATICA
+    document.querySelectorAll('.news-card').forEach(card => {
+        const dataAttr = card.dataset.date;
+        if (!dataAttr) return;
+
+        const postDate = new Date(dataAttr);
+        const today = new Date();
+        const daysOld = (today - postDate) / (1000 * 60 * 60 * 24);
+
+        if (daysOld > 14) {
+            card.classList.add('archived');
+            const archiveGrid = document.querySelector('.archive-grid');
+            if (archiveGrid) {
+                archiveGrid.appendChild(card.cloneNode(true));
+            }
+            card.remove();
+        }
+    });
 });
