@@ -144,3 +144,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+// Archivio automatico degli articoli
+document.addEventListener('DOMContentLoaded', function() {
+  // Numero di giorni dopo i quali un articolo viene archiviato (14 giorni)
+  const ARCHIVE_DAYS = 14;
+  
+  // Seleziona tutti gli articoli
+  const articles = document.querySelectorAll('.article-card');
+  const currentDate = new Date();
+  
+  articles.forEach(article => {
+    const articleDateStr = article.getAttribute('data-date');
+    const articleDate = new Date(articleDateStr);
+    
+    // Calcola la differenza in giorni
+    const diffTime = currentDate - articleDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    
+    // Se l'articolo è più vecchio di ARCHIVE_DAYS giorni, aggiungi la classe 'archived'
+    if (diffDays > ARCHIVE_DAYS) {
+      article.classList.add('archived');
+    }
+  });
+  
+  // Opzionale: puoi aggiungere qui la logica per nascondere/mostrare gli articoli archiviati
+  // o per spostarli automaticamente in una pagina di archivio
+});
